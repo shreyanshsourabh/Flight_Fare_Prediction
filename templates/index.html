@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flight.fare.prediction.system</title>
+    <style>
+        body{
+            background-color: rgb(236, 191, 199);
+        }
+        h1{
+            color: rgb(161, 44, 44);
+            text-align: center;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 70px;
+            font-size: 20px;
+        }
+        input, select{
+            background-color:rgb(241, 141, 141);
+            border: 2px solid rgb(237, 80, 106);
+            border-radius: 20px;
+            color: rgb(68, 65, 65);
+            font-size: 20px;
+        }
+        .route{
+            margin: 12px 24px;
+        }
+        .btn:hover{
+            background-color: orangered;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flight Fare Prediction</h1>
+    <div class="container">
+
+        <form id="predform" method="post" action="/predict">
+            <label>Duration</label> <br>
+            <input type="number" value="0" name="Duration"> <br><br>
+
+            <label>Total Stops</label> <br>
+            <input type="number" value="0" name="total_stops"> <br><br>
+
+            <label>Arrival</label> <br>
+            <input type="time" value="14:25" name="Arrival"> <br><br>
+
+            <label>Departure</label> <br>
+            <input type="time" value="16:50" name="Departure"> <br><br>
+
+            <label>Journey date</label> <br>
+            <input type="date" value="2023-07-03" name="journey_date"> <br><br>
+
+
+            <label>Route</label>
+            <select name="route1" class = route id="route1">
+                <option value="UNK">Select Route</option>
+                <option value="BHO" selected>BHO</option>
+                <option value="IXC">IXC</option>
+                <option value="IMF">IMF</option>
+                <option value="JDH">JDH</option>
+                <option value="PAT">PAT</option>
+                <option value="BBI">BBI</option>
+                <option value="BOM">BOM</option>
+                <option value="JAI">JAI</option>
+                <option value="JLR">JLR</option>
+                <option value="BDQ">BDQ</option>
+                <option value="IXR">IXR</option>
+                <option value="VNS">VNS</option>
+                <option value="MAA">MAA</option>
+                <option value="IXU">IXU</option>
+                <option value="IDR">IDR</option>
+                <option value="AMD">AMD</option>
+                <option value="NDC">NDC</option>
+                <option value="GAU">GAU</option>
+                <option value="ISK">ISK</option>
+                <option value="COK">COK</option>
+                <option value="GWL">GWL</option>
+                <option value="VTZ">VTZ</option>
+                <option value="IXZ">IXZ</option>
+                <option value="HYD">HYD</option>
+                <option value="UDR">UDR</option>
+                <option value="KNU">KNU</option>
+                <option value="IXA">IXA</option>
+                <option value="STV">STV</option>
+                <option value="CCU">CCU</option>
+                <option value="GOI">GOI</option>
+                <option value="DED">DED</option>
+                <option value="HBX">HBX</option>
+                <option value="VGA">VGA</option>
+                <option value="IXB">IXB</option>
+                <option value="LKO">LKO</option>
+                <option value="ATQ">ATQ</option>
+                <option value="RPR">RPR</option>
+                <option value="DEL">DEL</option>
+                <option value="TRV">TRV</option>
+                <option value="BLR">BLR</option>
+            </select>
+
+
+            <!-- <label for="route2">Route2</label> -->
+            <select name="route2" class = route id="route2">
+                <option value="UNK">Select Route</option>
+                <option value="BHO">BHO</option>
+                <option value="IXC" selected>IXC</option>
+                <option value="IMF">IMF</option>
+                <option value="JDH">JDH</option>
+                <option value="PAT">PAT</option>
+                <option value="BBI">BBI</option>
+                <option value="BOM">BOM</option>
+                <option value="JAI">JAI</option>
+                <option value="JLR">JLR</option>
+                <option value="BDQ">BDQ</option>
+                <option value="IXR">IXR</option>
+                <option value="VNS">VNS</option>
+                <option value="MAA">MAA</option>
+                <option value="IXU">IXU</option>
+                <option value="IDR">IDR</option>
+                <option value="AMD">AMD</option>
+                <option value="NDC">NDC</option>
+                <option value="GAU">GAU</option>
+                <option value="ISK">ISK</option>
+                <option value="COK">COK</option>
+                <option value="GWL">GWL</option>
+                <option value="VTZ">VTZ</option>
+                <option value="IXZ">IXZ</option>
+                <option value="HYD">HYD</option>
+                <option value="UDR">UDR</option>
+                <option value="KNU">KNU</option>
+                <option value="IXA">IXA</option>
+                <option value="STV">STV</option>
+                <option value="CCU">CCU</option>
+                <option value="GOI">GOI</option>
+                <option value="DED">DED</option>
+                <option value="HBX">HBX</option>
+                <option value="VGA">VGA</option>
+                <option value="IXB">IXB</option>
+                <option value="LKO">LKO</option>
+                <option value="ATQ">ATQ</option>
+                <option value="RPR">RPR</option>
+                <option value="DEL">DEL</option>
+                <option value="TRV">TRV</option>
+                <option value="BLR">BLR</option>
+            </select>
+
+
+            <!-- <label for="route3">Route3</label> -->
+            <select name="route3" class = route id="route3">
+                <option value="UNK">Select Route</option>
+                <option value="BHO">BHO</option>
+                <option value="IXC">IXC</option>
+                <option value="IMF">IMF</option>
+                <option value="JDH">JDH</option>
+                <option value="PAT">PAT</option>
+                <option value="BBI">BBI</option>
+                <option value="BOM">BOM</option>
+                <option value="JAI">JAI</option>
+                <option value="JLR">JLR</option>
+                <option value="BDQ">BDQ</option>
+                <option value="IXR">IXR</option>
+                <option value="VNS">VNS</option>
+                <option value="MAA">MAA</option>
+                <option value="IXU">IXU</option>
+                <option value="IDR">IDR</option>
+                <option value="AMD">AMD</option>
+                <option value="NDC">NDC</option>
+                <option value="GAU">GAU</option>
+                <option value="ISK">ISK</option>
+                <option value="COK">COK</option>
+                <option value="GWL">GWL</option>
+                <option value="VTZ">VTZ</option>
+                <option value="IXZ">IXZ</option>
+                <option value="HYD">HYD</option>
+                <option value="UDR">UDR</option>
+                <option value="KNU">KNU</option>
+                <option value="IXA">IXA</option>
+                <option value="STV">STV</option>
+                <option value="CCU">CCU</option>
+                <option value="GOI">GOI</option>
+                <option value="DED">DED</option>
+                <option value="HBX">HBX</option>
+                <option value="VGA">VGA</option>
+                <option value="IXB">IXB</option>
+                <option value="LKO">LKO</option>
+                <option value="ATQ">ATQ</option>
+                <option value="RPR">RPR</option>
+                <option value="DEL">DEL</option>
+                <option value="TRV">TRV</option>
+                <option value="BLR">BLR</option>
+            </select>
+
+
+            <!-- <label for="route4">Route4</label> -->
+            <select name="route4" class = route id="route4">
+                <option value="UNK">Select Route</option>
+                <option value="BHO">BHO</option>
+                <option value="IXC">IXC</option>
+                <option value="IMF">IMF</option>
+                <option value="JDH">JDH</option>
+                <option value="PAT">PAT</option>
+                <option value="BBI">BBI</option>
+                <option value="BOM">BOM</option>
+                <option value="JAI">JAI</option>
+                <option value="JLR">JLR</option>
+                <option value="BDQ">BDQ</option>
+                <option value="IXR">IXR</option>
+                <option value="VNS">VNS</option>
+                <option value="MAA">MAA</option>
+                <option value="IXU">IXU</option>
+                <option value="IDR">IDR</option>
+                <option value="AMD">AMD</option>
+                <option value="NDC">NDC</option>
+                <option value="GAU">GAU</option>
+                <option value="ISK">ISK</option>
+                <option value="COK">COK</option>
+                <option value="GWL">GWL</option>
+                <option value="VTZ">VTZ</option>
+                <option value="IXZ">IXZ</option>
+                <option value="HYD">HYD</option>
+                <option value="UDR">UDR</option>
+                <option value="KNU">KNU</option>
+                <option value="IXA">IXA</option>
+                <option value="STV">STV</option>
+                <option value="CCU">CCU</option>
+                <option value="GOI">GOI</option>
+                <option value="DED">DED</option>
+                <option value="HBX">HBX</option>
+                <option value="VGA">VGA</option>
+                <option value="IXB">IXB</option>
+                <option value="LKO">LKO</option>
+                <option value="ATQ">ATQ</option>
+                <option value="RPR">RPR</option>
+                <option value="DEL">DEL</option>
+                <option value="TRV">TRV</option>
+                <option value="BLR">BLR</option>
+            </select>
+
+
+            <!-- <label for="route5">Route5</label> -->
+            <select name="route5" class = route id="route5">
+                <option value="UNK">Select Route</option>
+                <option value="BHO">BHO</option>
+                <option value="IXC">IXC</option>
+                <option value="IMF">IMF</option>
+                <option value="JDH">JDH</option>
+                <option value="PAT">PAT</option>
+                <option value="BBI">BBI</option>
+                <option value="BOM">BOM</option>
+                <option value="JAI">JAI</option>
+                <option value="JLR">JLR</option>
+                <option value="BDQ">BDQ</option>
+                <option value="IXR">IXR</option>
+                <option value="VNS">VNS</option>
+                <option value="MAA">MAA</option>
+                <option value="IXU">IXU</option>
+                <option value="IDR">IDR</option>
+                <option value="AMD">AMD</option>
+                <option value="NDC">NDC</option>
+                <option value="GAU">GAU</option>
+                <option value="ISK">ISK</option>
+                <option value="COK">COK</option>
+                <option value="GWL">GWL</option>
+                <option value="VTZ">VTZ</option>
+                <option value="IXZ">IXZ</option>
+                <option value="HYD">HYD</option>
+                <option value="UDR">UDR</option>
+                <option value="KNU">KNU</option>
+                <option value="IXA">IXA</option>
+                <option value="STV">STV</option>
+                <option value="CCU">CCU</option>
+                <option value="GOI">GOI</option>
+                <option value="DED">DED</option>
+                <option value="HBX">HBX</option>
+                <option value="VGA">VGA</option>
+                <option value="IXB">IXB</option>
+                <option value="LKO">LKO</option>
+                <option value="ATQ">ATQ</option>
+                <option value="RPR">RPR</option>
+                <option value="DEL">DEL</option>
+                <option value="TRV">TRV</option>
+                <option value="BLR">BLR</option>
+            </select><br>
+
+            <br><br>
+            <label for="Airline">Airline</label>
+            <select name="Airline" id="Airline">
+                <option value="Select">Select Airline</option>
+                <option value="Air India">Air India</option>
+                <option value="GoAir">GoAir</option>
+                <option value="IndiGo">IndiGo</option>
+                <option value="Jet Airways">Jet Airways</option>
+                <option value="Jet Airways Business">Jet Airways Business</option>
+                <option value="Multiple carriers">Multiple carriers</option>
+                <option value="Multiple carriers Premium economy">Multiple carriers Premium economy</option>
+                <option value="SpiceJet">SpiceJet</option>
+                <option value="Trujet">Trujet</option>
+                <option value="Vistara">Vistara</option>
+                <option value="Vistara Premium economy">Vistara Premium economy</option>
+            </select><br><br>
+
+            <input class="btn" type="submit" value="Find Price"> <br><br><br>
+
+
+
+        </form>
+    </div>
+</body>
+</html>
